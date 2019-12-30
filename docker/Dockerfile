@@ -1,40 +1,8 @@
 ########################################
 # Derived from gprom travis build image which supports all backends
 ########################################
-FROM iitdbgroup/gprom_travis
+FROM iitdbgroup/2019-pvldb-snapshot-temporal-reproducibility-data
 MAINTAINER Boris Glavic <bglavic@iit.edu>
-########################################
-# Install extra packages for experiments
-########################################
-RUN apt-get -y update && apt-get install -y \
-    ghostscript \
-    gnuplot \
-    python3 \
-    postgresql \
-    python3-pip \
-    sudo \
-    wget \
-	&& rm -rf /var/lib/apt/lists/*
-########################################
-# Clone and install temporal postgres
-########################################
-ADD tpg_quickbuild.sh /scripts/tpg-install.sh
-RUN mkdir -p /tpg /servers /data \
-    && chown -R postgres /tpg /servers /scripts/tpg-install.sh /data
-USER postgres
-RUN cd /tpg \
-    && wget http://tpg.inf.unibz.it/downloads/postgresql-9.6beta3-temporal.tar.gz \
-    && tar xzf postgresql-9.6beta3-temporal.tar.gz \
-    && /scripts/tpg-install.sh
-########################################
-# Setup clusters for normal postgres
-########################################
-RUN mkdir -p /data/postgres \
-    && /usr/lib/postgresql/9.5/bin/initdb -D /data/postgres
-########################################
-# Load data
-########################################
-
 ########################################
 # User root
 ########################################
@@ -48,9 +16,9 @@ RUN git clone --single-branch --branch temporal https://github.com/IITDBGroup/gp
 ########################################
 RUN cd /gprom/src \
 	&& make -f Makefile.maintainer \
-	&& ./configure --with-oci-headers=/usr/local/oracle/include/oracle/12.2/client64/ --with-oci-lib=/usr/local/oracle/lib/oracle/12.2/client64/lib/ --disable-monetdb  \
-	&& make \
-    && make install
+	&& ./configure --with-oci-headers=/usr/local/oracle/include/oracle/12.2/client64/ --with-oci-lib=/usr/local/oracle/lib/oracle/12.2/client64/lib/ --disable-monetdb  --with-libpq-headers=/usr/include/postgresql \
+	&& make -j 8 \
+	&& make install
 ########################################
 # Clone reproducibility repro
 ########################################
