@@ -1,0 +1,92 @@
+\documentclass{vldb}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% PACKAGES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{booktabs} % For formal tables
+\usepackage{xcolor}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% CHANGE THESE BELOW TO ACTIVATE/DEACTIVATE COMMENTS
+%\usepackage[disable]{todonotes}
+\usepackage{todonotes}
+
+%\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\let\proof\relax
+\let\endproof\relax
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{color}
+\usepackage{listings}
+\usepackage{colortbl}
+\usepackage{cite}
+\usepackage[normalem]{ulem}
+\usepackage{nopageno}
+\usepackage{balance}
+
+\usepackage[labelfont=bf]{caption}
+
+\usepackage{url}
+\def\UrlBreaks{\do\/\do-}
+\usepackage{breakurl}
+\usepackage[breaklinks]{hyperref}
+
+%\usepackage{tikz-cd}
+\usepackage{xspace}
+\usepackage{environ}
+\usepackage{etoolbox}
+\usepackage{subcaption}
+\usepackage{rotating}
+\usepackage{times}
+\usepackage{enumitem}
+
+\usepackage{tikz}
+
+\usetikzlibrary{arrows,decorations.pathmorphing,positioning}
+\usetikzlibrary{shapes.geometric}
+\usetikzlibrary{calc}
+
+\usepackage{footnote}
+\makesavenoteenv{tabular}
+\makesavenoteenv{figure}
+\makesavenoteenv{table}
+\usepackage{tablefootnote}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% TECHREPORT INCLUSION MACROS
+\newbool{CompileTechReport}
+\newcommand{\detailedproof}[2]{\ifbool{CompileTechReport}{
+\begin{proof}
+#2
+\end{proof}
+}{\noindent\textit{Proof Sketch:}#1\qed}\smallskip}
+\newcommand{\ifnottechreport}[1]{\ifbool{CompileTechReport}{}{#1}}
+\newcommand{\iftechreport}[1]{\ifbool{CompileTechReport}{#1}{}}
+
+%%%%%%%%%%%%%%%%%%%%
+% CHANGE THIS TO COMPILE TECH REPORT WITH PROOFS
+\boolfalse{CompileTechReport}
+%\booltrue{CompileTechReport}
+
+\definecolor{revgreen}{rgb}{0,0.5,0}
+
+%\newrobustcmd{\revdel}[1]{{\color{gray}{#1}}}
+\newcommand{\revdel}[1]{}
+% \newrobustcmd{\reva}[1]{{\color{blue}{#1}}}
+% \newrobustcmd{\revb}[1]{{\color{revgreen}{#1}}}
+% \newrobustcmd{\revc}[1]{{\color{magenta}{#1}}}
+% \newrobustcmd{\revm}[1]{{\color{red}{#1}}}
+
+\newrobustcmd{\reva}[1]{#1}
+\newrobustcmd{\revb}[1]{#1}
+\newrobustcmd{\revc}[1]{#1}
+\newrobustcmd{\revm}[1]{#1}
+
+\newrobustcmd{\crtodo}[1]{{\color{red}\textbf [CR TODO: #1]}}
+
+\input{document.tex}

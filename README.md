@@ -1,6 +1,6 @@
 # Reproducibility Instructions for "Snapshot Semantics for Temporal Multiset Relations"
 
-## Paper:
+## Paper
 
 - **title**: Snapshot Semantics for Temporal Multiset Relations
 - **abstract**: Snapshot semantics is widely used for evaluating queries over temporal data: temporal relations are seen as sequences of snapshot relations, and queries are evaluated at each snapshot. In this work, we demonstrate that current approaches for snapshot semantics over interval-timestamped multiset relations are subject to two bugs regarding snapshot aggregation and bag difference. We introduce a novel temporal data model based on K-relations that overcomes these bugs and prove it to correctly encode snapshot semantics. Furthermore, we present an efficient implementation of our model as a database middleware and demonstrate experimentally that our approach is competitive with native implementations.
@@ -18,7 +18,7 @@ We used two datasets in our experiments:
 - A MySQL temporal test database from: https://github.com/datacharmer/test_db
 - Our version of TPC-BiH (SF1 and SF10), a temporal version of TPC-H. We contacted the authors of this benchmark and they could not make the benchmark data available to us. Thus, we generated data following on the description in reference [25].
 
-In our accompanying technical report we also use a third dataset (*Tourism*). However, this dataset is proprietary and, thus, we can only share the dataset in anonymize form
+In our accompanying technical report we also use a third dataset (*Tourism*). However, this dataset is proprietary and, thus, we can only share the dataset in anonymize form.
 
 ## Software
 

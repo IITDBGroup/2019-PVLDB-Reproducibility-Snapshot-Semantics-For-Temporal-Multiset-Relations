@@ -1,0 +1,450 @@
+%!TEX root = ../document.tex
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{figure*}[t]
+%   \centering
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   \begin{minipage}{\ovfigLeftColumnWidth}
+%     \centering
+%         \footnotesize
+% 		\begin{tabular}{|ll|l|}
+% 			\multicolumn{3}{c}{\textbf{works}} \\
+% 			\cline{1-3}
+% 			\thead{name} &\thead{skill} & \thead{period}\\
+% 			\cline{1-3}
+% 			Ann & SP & $[1, 7)$ \\
+% 			Sam & SP & $[5, 11)$ \\
+% 			Ann & SP & $[13, 14)$ \\
+% 			Joe & NS & $[3, 12)$ \\
+% 			\cline{1-3}
+% 		\end{tabular}
+%   \end{minipage}
+%   \begin{minipage}{\ovfigMiddleColumnWidth}
+%     \centering
+%     {$\reprRewr(Q_{spOnDuty})$}\\[2mm]
+%     \myrightarrow
+%   \end{minipage}
+%   \begin{minipage}{\ovfigRightColumnWidth}
+%     \centering
+%         \footnotesize
+% 		\begin{tabular}{|l|c|}
+% 			\cline{1-2}
+% 			\thead{cnt} & \thead{period}\\
+% 			\cline{1-2}
+% 			0 & $[-\infty, 1)$ \\
+% 			1 & $[1, 5)$ \\
+% 			2 & $[5, 7)$ \\
+% 			1 & $[7, 11)$ \\
+% 			0 & $[11, 13)$ \\
+% 			1 & $[13, 14)$ \\
+% 			0 & $[14, \infty)$ \\
+% 			\cline{1-2}
+% 		\end{tabular}
+
+%   \end{minipage}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   \begin{minipage}{\ovfigLeftColumnWidth}
+%     \centering
+% {\footnotesize $\reprN^{-1}$} \mydownarrow \hspace{1cm}\myuparrow {\footnotesize $\reprN$}
+%   \end{minipage}
+%   \begin{minipage}{\ovfigMiddleColumnWidth}
+%     \centering
+%     \mydownarrow {\footnotesize \reprRewr}
+%   \end{minipage}
+%   \begin{minipage}{\ovfigRightColumnWidth}
+%    \centering
+% {\footnotesize $\reprN^{-1}$} \mydownarrow \hspace{1cm}\myuparrow {\footnotesize $\reprN$}
+%   \end{minipage}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   \begin{minipage}{\ovfigLeftColumnWidth}
+%     \centering
+%         \footnotesize
+% 		\begin{tabular}{|ll|l}
+% 			\multicolumn{2}{c}{\textbf{works}} \\
+% 			\cline{1-2}
+% 			\thead{name} &\thead{skill} & \annotheadcell{$\semTimeNIN$}\\
+% 			\cline{1-2}
+% 			Ann & SP & \annotcell{$\{[1, 7) \mapsto 1, [13,14) \mapsto 1\}$} \\
+% 			Sam & SP & \annotcell{$\{[5, 11) \mapsto 1 \}$} \\
+% 			Joe & NS & \annotcell{$\{[3, 12) \mapsto 1\}$} \\
+% 			\cline{1-2}
+% 		\end{tabular}
+%       \end{minipage}
+%   \begin{minipage}{\ovfigMiddleColumnWidth}
+%     \centering
+%         {$Q_{spOnDuty}$}\\[2mm]
+%     \myrightarrow
+%   \end{minipage}
+%   \begin{minipage}{\ovfigRightColumnWidth}
+%         \footnotesize
+% 		\begin{tabular}{|l|l}
+% 			\cline{1-1}
+% 			\thead{cnt} & \multicolumn{1}{c}{\annotheadcell{$\semTimeNIN$}}\\[1mm]
+% 			\cline{1-1}
+%           0 & \annotcell{$\{ [-\infty, 1) \mapsto 1, [11, 13) \mapsto 1,[14, \infty) \mapsto 1 \}$} \\
+%           1 & \annotcell{$\{ [1, 5) \mapsto 1, [7, 11) \mapsto 1, [13, 14) \mapsto 1\}$} \\
+% 			2 & \annotcell{$\{ [5, 7) \mapsto 1 \}$} \\ \cline{1-1}
+% 			\cline{1-1}
+% 		\end{tabular}  \end{minipage}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   \begin{minipage}{\ovfigLeftColumnWidth}
+%     \centering
+%  \myuparrow {\footnotesize $\repr_{\semN}$}
+%   \end{minipage}
+%   \begin{minipage}{\ovfigMiddleColumnWidth}
+%     \centering
+%   \end{minipage}
+%   \begin{minipage}{\ovfigRightColumnWidth}
+%    \centering
+%     \myuparrow {\footnotesize $\repr_{\semN}$}
+%   \end{minipage}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+% %%%%%%%%%%%%%%%%%%%%
+%  \begin{minipage}{\ovfigLeftColumnWidth}
+%     \centering
+%         \tiny
+%     \begin{minipage}{.49\linewidth}
+%       $1 \mapsto{}$
+%       		\begin{tabular}{|ll|c}
+% 			\multicolumn{2}{c}{\textbf{works}} &\\
+% 			\cline{1-2}
+% 			\thead{name} &\thead{skill} &  \annotheadcell{$\semN$}\\
+% 			\cline{1-2}
+% 			Ann & SP & \annotcell{1} \\
+% 			\cline{1-2}
+% 		\end{tabular}
+%     \end{minipage}
+%     \hfill
+%     \begin{minipage}{.49\linewidth}
+%       $2 \mapsto{}$
+%       		\begin{tabular}{|ll|c}
+% 			\multicolumn{2}{c}{\textbf{works}} & \\
+% 			\cline{1-2}
+% 			\thead{name} &\thead{skill} &  \annotheadcell{$\semN$}\\
+% 			\cline{1-2}
+%               Ann & SP & \annotcell{1}\\
+% 			\cline{1-2}
+%             \end{tabular}
+%     \end{minipage}
+%     \hfill
+%     \begin{minipage}{.49\linewidth}
+%       $3 \mapsto{}$
+%       \begin{tabular}{|ll|c}
+% 			\multicolumn{2}{c}{\textbf{works}} & \\
+% 			\cline{1-2}
+% 			\thead{name} &\thead{skill} &  \annotheadcell{$\semN$} \\
+% 			\cline{1-2}
+% 			Ann & SP & \annotcell{1} \\
+%             Joe & NS & \annotcell{1}\\
+%             \cline{1-2}
+% 	  \end{tabular}
+%     \end{minipage}
+%     \begin{minipage}{0.49\linewidth}
+%       \center
+%       {\Large \ldots}
+%     \end{minipage}
+%   \end{minipage}
+% %%%%%%%%%%%%%%%%%%%%
+%   \begin{minipage}{\ovfigMiddleColumnWidth}
+%     \centering
+%     {$Q_{spOnDuty}$}\\[2mm]
+%     \myrightarrow
+%   \end{minipage}
+% %%%%%%%%%%%%%%%%%%%%
+%   \begin{minipage}{\ovfigRightColumnWidth}
+%     \centering
+%         \tiny
+%     \begin{minipage}{.29\linewidth}
+%       $1 \mapsto{}$
+% \begin{tabular}{|l|c}
+% 			\cline{1-1}
+% 			\thead{cnt} &   \annotheadcell{$\semN$}\\
+% 			\cline{1-1}
+% 			1  & \annotcell{1}\\
+% 			\cline{1-1}
+% 		\end{tabular}
+%     \end{minipage}
+%     \hfill
+%     \begin{minipage}{0.1\linewidth}
+%       {\Large \ldots}
+%     \end{minipage}
+%     \hfill
+%     \begin{minipage}{.29\linewidth}
+%       $5 \mapsto{}$
+% \begin{tabular}{|l|c}
+% 			\cline{1-1}
+% 			\thead{cnt} &   \annotheadcell{$\semN$}\\
+% 			\cline{1-1}
+% 			2  & \annotcell{1}\\
+% 			\cline{1-1}
+% 		\end{tabular}
+%     \end{minipage}
+%     \hfill
+%     \begin{minipage}{0.1\linewidth}
+%       {\Large \ldots}
+%     \end{minipage}
+%    \end{minipage}\\[3mm]
+
+%   \caption{Our approach for snapshot semantics queries over multiset relations: 1) we define relations annotated with temporal $\semN$-elements, functions that map  intervals to multiplicities, define a query semantics over such relations and prove that they are a representation system for snapshot multiset relations (they correctly implement snapshot semantics over mutltiset relations); 2) we demonstrate how this semantics can be implemented as SQL queries over an encoding of temporal information as  interval-timestamped tuples.}
+%   \label{fig:approach-overview}
+% \end{figure*}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \begin{figure}
+%   \begin{tikzpicture}[scale=.4]
+%   \tikzstyle{every node}=[font=\scriptsize]
+%
+%   \coordinate (A) at (1,0);
+%   \coordinate (B) at ($(1,0)+(20,0)+(.7cm,0)$);
+%
+%   \draw[->,very thick] (A)--(B);
+%   \foreach \t/\m in {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}
+%   {
+%     \draw[very thick] (\t cm,-1mm)--(\t cm,1mm);
+%     \draw ($(\t cm,0)+(.5cm,0)$)
+%     node[below, font=\fontsize{6}{6}\selectfont]{\m};
+%   }
+%   \draw[very thick] ($(B)+(-.7cm,-1mm)$)--($(B)+(-.7cm,1mm)$);
+%   \draw ($(B)+(-.5mm,-.5mm)$) node[below]{$h$};
+%
+%   \begin{scope}[shift={(2,0)}]
+%
+%     \draw[thick] (1,4.9)--+(9,0) node[pos=.5,above=-2pt]{M1, SP};
+%     \draw[thick] (4,4.1)--+(8,0) node[pos=.5,above=-2pt]{M2, SP};
+%     \draw[thick] (1,3.3)--+(13,0) node[pos=.5,above=-2pt]{M3, NS};
+%
+%
+%     \draw[thick] (1,2.1)--+(7,0) node[pos=.5,above=-2pt]{Ann, SP};
+%     \draw[thick] (6,1.3)--+(8,0) node[pos=.5,above=-2pt]{Sam, SP};
+%     \draw[thick] (16,1.3)--+(2,0) node[pos=.5,above=-2pt]{Ann, SP};
+%     \draw[thick] (6,0.5)--+(8,0) node[pos=.5,above=-2pt]{Joe, NS};
+%   \end{scope}
+%
+%   \end{tikzpicture}
+%   \caption{NEW EXAMPLE with hours 0-23 (to be dropped) only for us}
+% \end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure*}[htb]
+  \centering
+  \begin{tikzpicture}[scale=0.95]
+
+
+\newcommand{\ovfigLeftColumnWidth}{0.4\linewidth}
+\newcommand{\ovfigMiddleColumnWidth}{0.09\linewidth}
+\newcommand{\ovfigRightColumnWidth}{0.43\linewidth}
+
+
+
+  \tikzstyle{every node}=[font=\scriptsize]
+  {\renewcommand{\arraystretch}{1.1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+ % \draw[rounded corners=0.1cm] (-0.7,3.2) rectangle (17.9,-6.2);
+
+  \draw[fill=red!15,line width=0pt,color=red!15] (-0.7,3) rectangle (17.9,-0);
+  \draw[fill=orange!15,line width=0pt,color=orange!15] (-0.7,-0.5) rectangle (17.9,-2.5);
+  \draw[fill=green!15,line width=0pt,color=green!15] (-0.7,-3) rectangle (17.9,-6);
+
+  \begin{scope}[shift={(0,0)}]
+
+    \node[above, rotate=90] at (0,1.5) {{\bf \small Implementation}};
+    \node[color=white, fill=black, above left] at (10.3,2.5) {{\normalsize \bf \SQLrels{}}};
+
+    \draw [rounded corners=0.5cm, line width=1pt] (0,0) rectangle ++(6,3);
+    \node at (3,1.5) {
+      \begin{tabular}{|lll|}
+			%\multicolumn{3}{l}{\textbf{works}} \\
+			\cline{1-3}
+			\thead{name} &\thead{skill} & \thead{period}\\
+			\cline{1-3}
+			Ann & SP & $[03, 10)$ \\
+      Joe & NS & $[08, 16)$ \\
+			Sam & SP & $[08, 16)$ \\
+      Ann & SP & $[18, 20)$ \\
+			\cline{1-3}
+		  \end{tabular}
+    };
+    \draw[rounded corners=0.5cm, line width=1pt] (11,0) rectangle ++(6.5,3);
+    \node at (14.25,1.5) {
+  		\begin{tabular}{|l|c|}
+  			\cline{1-2}
+  			\thead{cnt} & \thead{period}\\
+  			\cline{1-2}
+  			0 & $[00, 03)$ \\
+  			1 & $[03, 08)$ \\
+  			2 & $[08, 10)$ \\
+  			1 & $[10, 16)$ \\
+  			0 & $[16, 18)$ \\
+        1 & $[18, 20)$ \\
+        0 & $[20, 24)$ \\
+  			\cline{1-2}
+  		\end{tabular}
+    };
+    \draw[->, very thick] (6.2,1.5) -- ++(4.6,0) node[pos=0.5, above] {$\reprRewr(Q_{onduty})$};
+  \end{scope}
+
+
+  \draw[->, line width=1pt] (3, 0) -- (3, -0.4) node[pos=0.6, left] {$\reprN^{-1}$};
+  \draw[->, line width=1pt] (4, -0.5) -- (4, -0.1) node[pos=0.6, right] {$\reprN$};
+
+  \draw[->, line width=1pt] (13.25, 0) -- (13.25, -0.4) node[pos=0.6, left] {$\reprN^{-1}$};
+  \draw[->, line width=1pt] (14.25, -0.5) -- (14.25, -0.1) node[pos=0.6, right] {$\reprN$};
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{scope}[shift={(0,-3)}]
+
+    \node[above, rotate=90] at (0,1.5) {{\bf \small Logical}};
+    \node[color=white, fill=black, above left] at (9.8,2) {{\normalsize \bf Period K-relations}};
+
+    \draw [rounded corners=0.5cm, line width=1pt] (0,0.5) rectangle ++(6.75,2);
+    \node at (3.5,1.5) {
+  		\begin{tabular}{|ll|c}
+  			\cline{1-2}
+  			\thead{name} &\thead{skill} & \annotheadcell{$\semTimeNIN$}\\
+  			\cline{1-2}
+  			Ann & SP & \annotcell{$\{[03, 10) \mapsto 1, [18,20) \mapsto 1\}$} \\
+  			Sam & SP & \annotcell{$\{[08, 16) \mapsto 1 \}$} \\
+  			Joe & NS & \annotcell{$\{[08, 16) \mapsto 1\}$} \\
+  			\cline{1-2}
+  		\end{tabular}
+    };
+    \draw[rounded corners=0.5cm, line width=1pt] (10,0.5) rectangle ++(7.5,2);
+    \node at (13.75,1.5) {
+  		\begin{tabular}{|l|l}
+  			\cline{1-1}
+  			\thead{cnt} & \multicolumn{1}{c}{\annotheadcell{$\semTimeNIN$}}\\[1mm]
+  			\cline{1-1}
+            0 & \annotcell{$\{ [00, 03) \mapsto 1, [16, 18) \mapsto 1,[20, 24) \mapsto 1 \}$} \\
+            1 & \annotcell{$\{ [03, 08) \mapsto 1, [10, 16) \mapsto 1 ,[18, 20) \mapsto 1\}$} \\
+  			    2 & \annotcell{$\{ [08, 10) \mapsto 1\}$} \\
+
+            \cline{1-1}
+  			\cline{1-1}
+  		\end{tabular}
+    };
+    \draw[->, very thick] (7,1.5) -- ++(2.7,0) node[pos=0.5, above] {$Q_{onduty}$} ;
+  \end{scope}
+
+  \draw[->, line width=1pt] (3, -2.5) -- (3, -2.9) node[pos=0.6, left] {$\tSlice{00}, \ldots, \tSlice{23}$};
+  \draw[->, line width=1pt] (4, -3) -- (4, -2.6) node[pos=0.6, right] {$\repr_{\semN}$};
+
+  \draw[->, line width=1pt] (13.25, -2.5) -- (13.25, -2.9) node[pos=0.6, left] {$\tSlice{00}, \ldots, \tSlice{23}$};
+  \draw[->, line width=1pt] (14.25, -3) -- (14.25, -2.6) node[pos=0.6, right] {$\repr_{\semN}$};
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \begin{scope}[shift={(0,-6)}]
+
+      \node[above, rotate=90] at (0,1.5) {{\bf \small \revc{Abstract}}};
+      \node[color=white,fill=black, above left] at (10,2.5) {{\normalsize \bf Snapshot K-relations}};
+
+      \draw [ rounded corners=0.5cm, line width=1pt] (0,0) rectangle ++(6,3);
+      \node at (2.2,2.7) {
+        \begin{tabular}{l|ll|c}
+          \cline{2-3}
+           $00 \mapsto {}$ & \thead{name} &\thead{skill} &  \annotheadcell{$\semN$}\\
+          \cline{2-3}
+        \end{tabular}
+      };
+      \node at (2.2,1.8) {
+        \begin{tabular}[t]{l|ll|c}
+          \multicolumn{2}{l}{{\bf \ldots}} & \multicolumn{1}{l}{} &\\
+          \cline{2-3}
+           $08 \mapsto {}$ & \thead{name} &\thead{skill} &  \annotheadcell{$\semN$}\\
+           \cline{2-3}
+           & Ann & SP & \annotcell{1} \\
+           & Joe & NS & \annotcell{1} \\
+           & Sam & SP & \annotcell{1} \\
+          \cline{2-3}
+        \end{tabular}
+      };
+      \node at (2.2,0.6) {
+        \begin{tabular}[t]{l|ll|c}
+          \multicolumn{2}{l}{{\bf \ldots}} & \multicolumn{1}{l}{} &\\
+          \cline{2-3}
+           $18 \mapsto {}$ & \thead{name} &\thead{skill} &  \annotheadcell{$\semN$}\\
+           \cline{2-3}
+           \multicolumn{1}{l|}{{\bf \ldots}} & Ann & SP & \annotcell{1} \\
+          \cline{2-3}
+        \end{tabular}
+      };
+
+      \draw[rounded corners=0.5cm, line width=1pt] (10.5,0) rectangle ++(7,3);
+      \node at (13.75,2.55) {
+        \begin{tabular}{l|l|c}
+          \cline{2-2}
+           $00 \mapsto {}$ & \thead{cnt} &  \annotheadcell{$\semN$}\\
+           \cline{2-2}
+            & 0 & \annotcell{1} \\
+          \cline{2-2}
+        \end{tabular}
+      };
+      \node at (13.75,1.8) {
+        \begin{tabular}{l|l|c}
+          \multicolumn{2}{l}{{\bf \ldots}} & \multicolumn{1}{l}{}\\
+          \cline{2-2}
+           $08 \mapsto {}$ & \thead{cnt} &  \annotheadcell{$\semN$}\\
+           \cline{2-2}
+            & 2 & \annotcell{1} \\
+          \cline{2-2}
+        \end{tabular}
+      };
+      \node at (13.75,0.6) {
+        \begin{tabular}{l|l|c}
+          \multicolumn{2}{l}{{\bf \ldots}} & \multicolumn{1}{l}{}\\
+          \cline{2-2}
+           $18 \mapsto {}$ & \thead{cnt} &  \annotheadcell{$\semN$}\\
+           \cline{2-2}
+            {\bf \ldots}& 1 & \annotcell{1} \\
+          \cline{2-2}
+        \end{tabular}
+      };
+      % \draw[->, very thick] (7.2,2.5) -- ++(2.6,0) node[pos=0.5, above] {$Q_{onduty}
+      % %(\tSlice{00}(\textbf{works}))
+      % $} ;
+      \node at (8.5, 2.15) {{\bf \ldots}};
+      \draw[->, very thick] (6.2,1.5) -- ++(4,0) node[pos=0.5, above] {$Q_{onduty}
+      %(\tSlice{08}(\textbf{works}))
+      $} ;
+      \node at (8.5, 1.2) {{\bf \ldots}};
+      \draw[->, very thick] (6.2,0.6) -- ++(4,0) node[pos=0.5, above] {$Q_{onduty}
+      %(\tSlice{18}(\textbf{works}))
+      $} ;
+      \node at (8.5, 0.3) {{\bf \ldots}};
+    \end{scope}
+
+  }
+
+  \end{tikzpicture}
+  \caption{Overview of our approach. Our \emph{\revc{abstract} model} is
+  \emph{snapshot K-relations} and nontemporal queries over snapshots (snapshot semantics). Our
+  \emph{logical} model is \emph{period K-relations} and % temporal
+  queries
+  corresponding to the \reva{abstract} model's snapshot queries. % in the \revc{abstract} model.
+  Our
+  \emph{implementation} uses \emph{\SQLrels{}} and
+  rewritten non-temporal queries implementing the other model's snapshot queries. % of the two other models.
+  Each model is associated with
+  transformations to the other models % below and above
+  which commute with queries (modulo the rewriting $\reprRewr$ when mapping to the implementation). % As we will demonstrate, all of these transformations commute with queries (modulo the rewriting $\reprRewr$ when translating from the logical model to the implementation).
+} % e.g., for any period K-database $D$, query $Q$, and timepoint $\tPoint$ we have $\query(\tSlice{\tPoint}(D)) = \tSlice{\tPoint}(\query(D))$, which is \emph{snapshot-reducibility}.}
+  \label{fig:overview-approach}
+\end{figure*}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../pvldb.tex"
+%%% End:

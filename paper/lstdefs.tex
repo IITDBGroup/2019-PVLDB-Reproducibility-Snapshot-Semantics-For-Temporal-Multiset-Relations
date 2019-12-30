@@ -1,0 +1,97 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Colors
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{lstpurple}{rgb}{0.5,0,0.5}
+\definecolor{lstred}{rgb}{1,0,0}
+\definecolor{lstreddark}{rgb}{0.7,0,0}
+\definecolor{lstredl}{rgb}{0.64,0.08,0.08}
+\definecolor{lstmildblue}{rgb}{0.66,0.72,0.78}
+\definecolor{lstblue}{rgb}{0,0,1}
+\definecolor{lstmildgreen}{rgb}{0.42,0.53,0.39}
+\definecolor{lstgreen}{rgb}{0,0.5,0}
+\definecolor{lstorangedark}{rgb}{0.6,0.3,0}
+\definecolor{lstorange}{rgb}{0.75,0.52,0.005}
+\definecolor{lstorangelight}{rgb}{0.89,0.81,0.67}
+\definecolor{lstbeige}{rgb}{0.90,0.86,0.45}
+
+
+% Declare bold typewriter font with Computer Modern
+\DeclareFontShape{OT1}{cmtt}{bx}{n}{<5><6><7><8><9><10><10.95><12><14.4><17.28><20.74><24.88>cmttb10}{}
+
+%%%%%%%%%% SQL + proveannce listing settings
+\lstdefinestyle{psql}
+{
+tabsize=2,
+basicstyle=\footnotesize\upshape\ttfamily,
+language=SQL,
+morekeywords={PROVENANCE,BASERELATION,INFLUENCE,COPY,ON,TRANSPROV,TRANSSQL,TRANSXML,CONTRIBUTION,COMPLETE,TRANSITIVE,NONTRANSITIVE,EXPLAIN,SQLTEXT,GRAPH,IS,ANNOT,THIS,XSLT,MAPPROV,cxpath,OF,TRANSACTION,SERIALIZABLE,COMMITTED,INSERT,INTO,WITH,SCN,UPDATED,WINDOW},
+extendedchars=false,
+keywordstyle=\bfseries,
+mathescape=true,
+escapechar=@,
+sensitive=true
+}
+
+
+%%%%%%%%%% SQL + proveannce listing settings - colorful version
+\lstdefinestyle{psqlcolor}
+{
+tabsize=2,
+basicstyle=\footnotesize\upshape\ttfamily,
+language=SQL,
+morekeywords={PROVENANCE,BASERELATION,INFLUENCE,COPY,ON,TRANSPROV,TRANSSQL,TRANSXML,CONTRIBUTION,COMPLETE,TRANSITIVE,NONTRANSITIVE,EXPLAIN,SQLTEXT,GRAPH,IS,ANNOT,THIS,XSLT,MAPPROV,cxpath,OF,TRANSACTION,SERIALIZABLE,COMMITTED,INSERT,INTO,WITH,SCN,UPDATED,FOLLOWING,RANGE,UNBOUNDED,PRECEDING,OVER,PARTITION,WINDOW},
+extendedchars=false,
+keywordstyle=\bfseries\color{lstpurple},
+deletekeywords={count,min,max,avg,sum,lag,first_value,last_value},
+keywords=[2]{count,min,max,avg,sum,lag,first_value,last_value,lead,row_number},
+keywordstyle=[2]\color{lstblue},
+stringstyle=\color{lstreddark},
+commentstyle=\color{lstgreen},
+mathescape=true,
+escapechar=@,
+sensitive=true
+}
+
+
+%%%%%%%%%% DATALOG style
+\lstdefinestyle{datalog}
+{
+basicstyle=\footnotesize\upshape\ttfamily,
+language=prolog
+}
+
+
+
+
+%%%%%%%%%% listings settings for pseudo code
+\lstdefinestyle{pseudocode}
+{
+  tabsize=3,
+  basicstyle=\small,
+  language=c,
+  morekeywords={if,else,foreach,case,return,in,or},
+  extendedchars=true,
+  mathescape=true,
+  literate={:=}{{$\gets$}}1 {<=}{{$\leq$}}1 {!=}{{$\neq$}}1 {append}{{$\listconcat$}}1 {calP}{{$\cal P$}}{2},
+  keywordstyle=\color{lstpurple},
+  escapechar=&,
+  numbers=left,
+  numberstyle=\color{lstgreen}\small\bfseries,
+  stepnumber=1,
+  numbersep=5pt,
+}
+
+%%%%%%%%%% XML listings settings
+\lstdefinestyle{xmlstyle}
+{
+  tabsize=3,
+  basicstyle=\small,
+  language=xml,
+  extendedchars=true,
+  mathescape=true,
+  escapechar=£,
+  tagstyle=\color{keywordpurple},
+  usekeywordsintag=true,
+  morekeywords={alias,name,id},
+  keywordstyle=\color{lstred}
+}
