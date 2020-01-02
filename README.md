@@ -4,14 +4,22 @@
 
 - **title**: Snapshot Semantics for Temporal Multiset Relations
 - **abstract**: Snapshot semantics is widely used for evaluating queries over temporal data: temporal relations are seen as sequences of snapshot relations, and queries are evaluated at each snapshot. In this work, we demonstrate that current approaches for snapshot semantics over interval-timestamped multiset relations are subject to two bugs regarding snapshot aggregation and bag difference. We introduce a novel temporal data model based on K-relations that overcomes these bugs and prove it to correctly encode snapshot semantics. Furthermore, we present an efficient implementation of our model as a database middleware and demonstrate experimentally that our approach is competitive with native implementations.
-- **reproducibility instructions**: Our reproducibility submission is available as a git repository on github: https://github.com/IITDBGroup/2019-PVLDB-Reproducibility-Snapshot-Semantics-For-Temporal-Multiset-Relations . The `README.md` file contains instructions for the reproducibility committee.
+- **reproducibility instructions**: Our reproducibility submission is available as a git repository on github: [https://github.com/IITDBGroup/2019-PVLDB-Reproducibility-Snapshot-Semantics-For-Temporal-Multiset-Relations](https://github.com/IITDBGroup/2019-PVLDB-Reproducibility-Snapshot-Semantics-For-Temporal-Multiset-Relations). The `README.md` file contains instructions for the reproducibility committee.
 
-# Information
+# Hardware
 
+All runtime experiments were executed on a server with the specs shown below.
 
+| Element          | Description                                                                   |
+|------------------|-------------------------------------------------------------------------------|
+| CPU              | 2 x AMD Opteron(tm) Processor 4238, 3.3Ghz                                    |
+| Caches (per CPU) | L1 (288KiB), L2 (6 MiB), L3 (6MiB)                                            |
+| Memory           | 128GB (DDR3 1333MHz)                                                          |
+| RAID Controller  | LSI Logic / Symbios Logic MegaRAID SAS 2108 [Liberator] (rev 05), 512MB cache |
+| RAID Config      | 4 x 1TB, configured as RAID 5                                                 |
+| Disks            | 4 x 1TB 7.2K RPM Near-Line SAS 6Gbps (DELL CONSTELLATION ES.3)                |
 
--    A short description of the hardware needed to run your code and reproduce experiments included in the paper, with detailed specification of unusual or not commercially available hardware. If your hardware is sufficiently specialized, please have plans to allow the reviewers to access your hardware.
--    A short description of any software or data necessary to run your code and reproduce experiments included in the paper, particularly if it is restricted-access (e.g., commercial software without a free demo or academic version). If this is the case, please have plans to allow the reviewers access to any necessary software or data.
+For experiments with Oracle and Teradata we will provide access to one of our machines as described below.
 
 # Datasets
 
@@ -61,7 +69,7 @@ sudo docker pull iitdbgroup/2019-pvldb-snapshot-temporal-reproducibility
 
 Alternatively you can manually setup the environment. In case this is necessary, please follow the [instructions below](#alternative-manual-setup).
 
-# Run experiments
+# Run experiments (Postgres and Temporal Postgres)
 
 To the experiments, use the provided docker image. First create a directory of your choice to hold the result:
 
@@ -87,17 +95,44 @@ root@9bd801801bb9:/reproducibility# ./run-experiments.sh
 
 The whole experimental evaluation will take about TODO hours depending on your hardware. The script is setup to not overwrite existing files, i.e., an interrupted run can be continued from the last successful experiment.
 
+# Run experiments (Oracle and Teradata)
+
+Since we cannot distribute these systems because of licensing issues, we provide access to the machine we did run the experiments on originally. Please contact Boris Glavic [bglavic@iit.edu](bglavic@iit.edu) or Xing
+Niu [xniu7@hawk.iit.edu](xniu7@hawk.iit.edu) for credentials.
+
 # Suggestions for additional experiments
 
 ## TODO WHAT HERE?
 
 ## Running custom temporal queries with gprom
 
-
+You can use the GProM installation from the docker image to iteratively run queries with snapshot temporal semantics. GProM comes with a CLI client for running queries. Here we provide some ideas of what queries you could try.
 
 
 # Appendix
 
 ## Alternative Manual Setup
 
-Alternatively, you can manually setup the
+Alternatively, you can manually setup the systems for experiments on your own machine. To run the Postgres experiments you need to install both a regular postgres server and the temporal postgres (TPG) maintained by Anton Dignoes. Furthermore, you need to build GProM with support for Postgres backends (GProM can be compiled to support several backends by linking against the C client libraries of these backends). We provide instructions below.
+
+### Installing GProM
+
+To install GProM from source you should follow the instructions from [https://github.com/IITDBGroup/gprom](https://github.com/IITDBGroup/gprom).
+
+### Installing Postgres
+
+You can install Postgres from source or using your package managers (e.g., apt on Ubuntu or homebrew on mac). The directory where the database files are stored is called a "cluster" in Postgres terminology. We provide a separate docker container with the database dumps that you can use to load the data used in the experiments. This dumps can be loaded using the `psql` client (part of a Postgres installation).
+
+### Installing TPG (Temporal Postgres)
+
+Currently, temporal Postgres has to be installed from source (available [here](http://tpg.inf.unibz.it/). Once installed, loading data works just like with regular Postgres.
+
+### Loading data
+
+-- TODO explain
+
+### Running experiments
+
+You can clone the reproducibility repository [https://github.com/IITDBGroup/2019-PVLDB-Reproducibility-Snapshot-Semantics-For-Temporal-Multiset-Relations](https://github.com/IITDBGroup/2019-PVLDB-Reproducibility-Snapshot-Semantics-For-Temporal-Multiset-Relations) to get the scripts used to run the experiments and plotting the results. Note that you will have to edit a configuration file to account for the connection settings of your local postgres installation.
+
+-- TODO explain
