@@ -35,3 +35,9 @@ RUN mkdir -p /data/postgres \
 # Load data
 ########################################
 #TODO
+########################################
+# Per default start a script that just sleeps
+########################################
+USER root
+ADD ./entrypoint.sh /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]
