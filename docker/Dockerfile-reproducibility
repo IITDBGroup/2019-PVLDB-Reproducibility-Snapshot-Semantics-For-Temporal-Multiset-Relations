@@ -34,7 +34,14 @@ RUN mkdir -p /data/postgres \
 ########################################
 # Load data
 ########################################
-#TODO
+#ADD datasets/employee /datasets/employee
+USER root
+RUN git clone https://github.com/vrajmohan/pgsql-sample-data.git /datasets
+ADD load.sql /datasets/employee
+ADD load_data.sh /scripts/load_data.sh
+
+USER postgres
+RUN /scripts/load_data.sh
 ########################################
 # Per default start a script that just sleeps
 ########################################
