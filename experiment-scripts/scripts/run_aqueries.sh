@@ -27,5 +27,5 @@ done;
 for i in 1k 10k 100k 300k 500k 1000k 3000k
 do
          echo -e "running q$i ..."
-         $DIR/scripts/time_aquery.sh employees $DIR/queries/pg_nat/q"$i".sql 2 1 > $DIR/result/aq"$i".txt
+         $DIR/scripts/time_aquery.sh employees $DIR/queries/pg_nat/"$i".sql 2 1 > $DIR/result/aq"$i".txt
 done;
