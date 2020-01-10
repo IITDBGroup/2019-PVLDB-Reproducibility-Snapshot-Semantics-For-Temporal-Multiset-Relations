@@ -39,8 +39,8 @@ SELECT F0."nation" AS "nation", F0."o_year" AS "o_year", F0."sum_profit" AS "sum
 FROM (SELECT * FROM _temp_view_2) F0 UNION ALL
 SELECT F0."nation" AS "nation", F0."o_year" AS "o_year", F0."sum_profit" AS "sum_profit", 1 AS "t_b", 0 AS "t_e", F0."t_b" AS "ts"
 FROM (SELECT * FROM _temp_view_2) F0) F0) F0) F0
-WHERE (F0.DIFFPREVIOUS != 0)) F0
-WHERE (NOT (((F0."t_e") IS NULL)))),
+) F0
+WHERE (F0.DIFFPREVIOUS != 0) AND (NOT (((F0."t_e") IS NULL)))),
 _temp_view_0 AS (
 SELECT /*+ materialize */ F0."nation" AS "nation", F0."o_year" AS "o_year", F0."sum_profit" AS "sum_profit", F0."t_b" AS "t_b", F0."t_e" AS "t_e"
 FROM ((SELECT * FROM _temp_view_1) F0 JOIN generate_series(1,(SELECT MAX(NUMOPEN) FROM (SELECT * FROM _temp_view_1) F0)) F1(n) ON ((F0."numopen" >= F1.N))))
