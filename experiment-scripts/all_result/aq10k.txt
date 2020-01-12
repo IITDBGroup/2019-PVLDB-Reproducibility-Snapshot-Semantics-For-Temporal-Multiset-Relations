@@ -1,0 +1,8 @@
+1 of 2
+runtime is 18.842000
+Current total sum is 0.0
+2 of 2
+runtime is 18.551000
+Current total sum is 18.551000
+total sum is 18.551000
+Avg runtime is 18.55100000000000000000
