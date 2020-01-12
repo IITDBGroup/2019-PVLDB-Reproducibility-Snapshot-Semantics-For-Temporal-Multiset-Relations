@@ -49,6 +49,6 @@ for f in range(len(fname)):
     #save each plot to pdf
     print (cur_fn + ".pdf")
     #plt.savefig("./" + cur_fn + ".pdf",dpi=600,format='pdf');
-    plt.savefig("./" + cur_fn + ".pdf",format='pdf');
+    plt.savefig(path_dir + cur_fn + ".pdf",format='pdf');
     #clean current plot data
     plt.clf();
