@@ -2,7 +2,7 @@ WITH _temp_view_1 AS (
 SELECT /*+ materialize */ F0."title" AS "title", F0."salary" AS "salary", F0."dept_no" AS "dept_no", F0."t_b" AS "t_b", F0."t_e" AS "t_e"
 FROM (
 (SELECT *
-    FROM (DEPT_MANAGER a 
+    FROM (DEPT_EMP a 
            PERIOD JOIN WITH(from_date, to_date, from_date, to_date) AS (ts1, te1)
            SALARIES b
            USING(emp_no)) x) y 
