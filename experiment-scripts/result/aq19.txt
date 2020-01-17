@@ -1,8 +1,8 @@
 1 of 2
-runtime is 13.099000
+runtime is 12.871000
 Current total sum is 0.0
 2 of 2
-runtime is 13.115000
-Current total sum is 13.115000
-total sum is 13.115000
-Avg runtime is 13.11500000000000000000
+runtime is 12.900000
+Current total sum is 12.900000
+total sum is 12.900000
+Avg runtime is 12.90000000000000000000

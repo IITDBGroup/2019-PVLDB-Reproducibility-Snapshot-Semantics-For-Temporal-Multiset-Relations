@@ -16,7 +16,7 @@ RUN git clone --single-branch --branch temporal https://github.com/IITDBGroup/gp
 ########################################
 RUN cd /gprom/src \
 	&& make -f Makefile.maintainer \
-	&& ./configure --with-oci-headers=/usr/local/oracle/include/oracle/12.2/client64/ --with-oci-lib=/usr/local/oracle/lib/oracle/12.2/client64/lib/ --disable-monetdb  --with-libpq-headers=/usr/include/postgresql \
+	&& ./configure --with-oci-headers=/usr/local/oracle/include/oracle/12.2/client64/ --with-oci-lib=/usr/local/oracle/lib/oracle/12.2/client64/lib/ --disable-monetdb  --with-libpq-headers=/usr/include/postgresql --disable-java \
 	&& make -j 8 \
 	&& make install
 ########################################
@@ -27,6 +27,11 @@ RUN git clone https://github.com/IITDBGroup/2019-PVLDB-Reproducibility-Snapshot-
 # Setup workdin
 ########################################
 WORKDIR /reproducibility
+########################################
+# Setup postgresql
+########################################
+ADD postgresql.conf /data/postgres/postgresql.conf
+ADD postgresql.conf /data/tpg/postgresql.conf
 ########################################
 # Per default start a script that just sleeps
 ########################################
