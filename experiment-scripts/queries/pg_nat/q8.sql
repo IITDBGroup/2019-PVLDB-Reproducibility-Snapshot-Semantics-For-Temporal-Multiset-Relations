@@ -1,37 +1,37 @@
 WITH _temp_view_2 AS (
 SELECT o_year AS "o_year", sum(CASE WHEN nation = 'ALGERIA' THEN volume ELSE 0 END) / sum(volume) AS "mkt_share", ts AS "t_b", te AS "t_e" FROM (
 (SELECT to_char(o_orderdate, 'YYYY') AS o_year, l_extendedprice * (1 - l_discount) AS volume, n2_name AS nation, ts, te
-FROM                                                                                           
+FROM
 (SELECT * FROM (
  (SELECT * FROM (
  (SELECT * FROM (
   (SELECT * FROM (
    (SELECT * FROM (
     (SELECT * FROM (
-      (SELECT * FROM 
+      (SELECT * FROM
         (time_supplier a
-        PERIOD JOIN WITH (ACTIVE_TIME_BEGIN, ACTIVE_TIME_END, ACTIVE_TIME_BEGIN, ACTIVE_TIME_END) AS (ts1, te1) 
+        PERIOD JOIN WITH (ACTIVE_TIME_BEGIN, ACTIVE_TIME_END, ACTIVE_TIME_BEGIN, ACTIVE_TIME_END) AS (ts1, te1)
         time_lineitem b
         ON (s_suppkey = l_suppkey)) x1) y1
-            PERIOD JOIN WITH (ts1, te1, ACTIVE_TIME_BEGIN, ACTIVE_TIME_END) AS (ts2, te2) 
-             time_orders b
+            PERIOD JOIN WITH (ts1, te1, ACTIVE_TIME_BEGIN, ACTIVE_TIME_END) AS (ts2, te2)
+             (select * from time_orders where o_orderdate >= TO_DATE('1995-01-01', 'YYYY-MM-DD')  AND o_orderdate <= TO_DATE('1996-12-31', 'YYYY-MM-DD')) b
              ON(l_orderkey = o_orderkey)) x2) y2
-                PERIOD JOIN WITH (ts2, te2, VISIBLE_TIME_BEGIN, VISIBLE_TIME_END) AS (ts3, te3) 
+                PERIOD JOIN WITH (ts2, te2, VISIBLE_TIME_BEGIN, VISIBLE_TIME_END) AS (ts3, te3)
                 time_customer c
                 ON (o_custkey = c_custkey)) x3) y3
-                    PERIOD JOIN WITH (ts3, te3, ACTIVE_TIME_BEGIN, ACTIVE_TIME_END) AS (ts4, te4) 
+                    PERIOD JOIN WITH (ts3, te3, ACTIVE_TIME_BEGIN, ACTIVE_TIME_END) AS (ts4, te4)
                     time_nation d
                     ON (c_nationkey = n_nationkey)) x4) y4
                         PERIOD JOIN WITH (ts4, te4, AVAILABLE_TIME_BEGIN, AVAILABLE_TIME_END) AS (ts5, te5)
-                        time_part e
-                        ON (l_partkey = p_partkey)) x5) y5 
-                        PERIOD JOIN WITH (ts5, te5, ACTIVE_TIME_BEGIN, ACTIVE_TIME_END) AS (ts6, te6) 
+                        (select * from time_part where p_type = 'PROMO BRUSHED COPPER') e
+                        ON (l_partkey = p_partkey)) x5) y5
+                        PERIOD JOIN WITH (ts5, te5, ACTIVE_TIME_BEGIN, ACTIVE_TIME_END) AS (ts6, te6)
                         (SELECT n_nationkey AS n2_nationkey, n_name AS n2_name, ACTIVE_TIME_BEGIN, ACTIVE_TIME_END FROM time_nation) n2
                         ON (s_nationkey = n2_nationkey)) x6) y6
-                          PERIOD JOIN WITH (ts6, te6, ACTIVE_TIME_BEGIN, ACTIVE_TIME_END) AS (ts, te) 
-                          time_region
+                          PERIOD JOIN WITH (ts6, te6, ACTIVE_TIME_BEGIN, ACTIVE_TIME_END) AS (ts, te)
+                          (select * from time_region where r_name = 'AFRICA') f
                           ON (n_regionkey = r_regionkey)) x7) y7
-WHERE r_name = 'AFRICA' AND o_orderdate >= TO_DATE('1995-01-01', 'YYYY-MM-DD')  AND o_orderdate <= TO_DATE('1996-12-31', 'YYYY-MM-DD')  AND p_type = 'PROMO BRUSHED COPPER') ) x8
+                    ) ) x8
             GROUP BY PERIOD WITH (ts,te) o_year ORDER BY o_year
 ),
 _temp_view_1 AS (

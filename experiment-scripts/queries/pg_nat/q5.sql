@@ -4,25 +4,25 @@ SELECT n_name AS "n_name", sum(l_extendedprice * (1 - l_discount)) AS "revenue",
     (SELECT * FROM (
    (SELECT * FROM (
     (SELECT * FROM (
-      (SELECT * FROM 
+      (SELECT * FROM
         (time_supplier a
-        PERIOD JOIN WITH (ACTIVE_TIME_BEGIN, ACTIVE_TIME_END, ACTIVE_TIME_BEGIN, ACTIVE_TIME_END) AS (ts1, te1) 
+        PERIOD JOIN WITH (ACTIVE_TIME_BEGIN, ACTIVE_TIME_END, ACTIVE_TIME_BEGIN, ACTIVE_TIME_END) AS (ts1, te1)
         time_lineitem b
         ON (s_suppkey = l_suppkey)) x1) y1
-            PERIOD JOIN WITH (ts1, te1, ACTIVE_TIME_BEGIN, ACTIVE_TIME_END) AS (ts2, te2) 
-             time_orders b
+            PERIOD JOIN WITH (ts1, te1, ACTIVE_TIME_BEGIN, ACTIVE_TIME_END) AS (ts2, te2)
+             (select * from time_orders where o_orderdate >= TO_DATE('1995-01-01', 'YYYY-MM-DD') AND o_orderdate < TO_DATE('1995-02-01','YYYY-MM-DD')) b
              ON(l_orderkey = o_orderkey)) x2) y2
-                PERIOD JOIN WITH (ts2, te2, VISIBLE_TIME_BEGIN, VISIBLE_TIME_END) AS (ts3, te3) 
+                PERIOD JOIN WITH (ts2, te2, VISIBLE_TIME_BEGIN, VISIBLE_TIME_END) AS (ts3, te3)
                 time_customer c
-                ON (o_custkey = c_custkey)) x3) y3
-                    PERIOD JOIN WITH (ts3, te3, ACTIVE_TIME_BEGIN, ACTIVE_TIME_END) AS (ts4, te4) 
+                ON (o_custkey = c_custkey AND c_nationkey = s_nationkey)) x3) y3
+                    PERIOD JOIN WITH (ts3, te3, ACTIVE_TIME_BEGIN, ACTIVE_TIME_END) AS (ts4, te4)
                     time_nation d
                     ON (s_nationkey = n_nationkey)) x4) y4
-                      PERIOD JOIN WITH (ts4, te4, ACTIVE_TIME_BEGIN, ACTIVE_TIME_END) AS (ts, te) 
-                      time_region d
+                      PERIOD JOIN WITH (ts4, te4, ACTIVE_TIME_BEGIN, ACTIVE_TIME_END) AS (ts, te)
+                      (select * from time_region where r_name = 'AMERICA') d
                       ON (n_regionkey = r_regionkey)) x5
-        WHERE c_nationkey = s_nationkey and r_name = 'AMERICA' AND o_orderdate >= TO_DATE('1995-01-01', 'YYYY-MM-DD') AND o_orderdate < TO_DATE('1995-02-01','YYYY-MM-DD')) y
-        GROUP BY PERIOD WITH (ts,te) n_name 
+        ) y
+        GROUP BY PERIOD WITH (ts,te) n_name
         ORDER BY revenue DESC
 ),
 _temp_view_1 AS (

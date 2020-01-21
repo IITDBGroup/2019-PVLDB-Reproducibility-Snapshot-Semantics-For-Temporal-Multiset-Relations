@@ -1,13 +1,12 @@
 WITH _temp_view_2 AS (
 SELECT l_shipmode AS "l_shipmode", sum(CASE WHEN o_orderpriORity = '1-URGENT' OR o_orderpriority = '2-HIGH' THEN 1 ELSE 0 END) AS "high_line_count", sum(CASE WHEN o_orderpriORity <> '1-URGENT' AND o_orderpriORity <> '2-HIGH' THEN 1 ELSE 0 END) AS "low_line_count", ts AS "t_b", te AS "t_e"
-FROM 
+FROM
    (
-    time_orders a 
-    PERIOD JOIN WITH (ACTIVE_TIME_BEGIN, ACTIVE_TIME_END, ACTIVE_TIME_BEGIN, ACTIVE_TIME_END) AS (ts,te) 
-    time_lineitem b
+    time_orders a
+    PERIOD JOIN WITH (ACTIVE_TIME_BEGIN, ACTIVE_TIME_END, ACTIVE_TIME_BEGIN, ACTIVE_TIME_END) AS (ts,te)
+    (select * from time_lineitem WHERE (l_shipmode = 'AIR' OR l_shipmode = 'MAIL') AND l_commitdate < l_receiptdate AND l_shipdate < l_commitdate AND l_receiptdate >= TO_DATE('1995-01-01', 'YYYY-MM-DD') AND l_receiptdate < TO_DATE('1996-01-01', 'YYYY-MM-DD')) b
     ON (o_orderkey = l_orderkey)) x
-WHERE (l_shipmode = 'AIR' OR l_shipmode = 'MAIL') AND l_commitdate < l_receiptdate AND l_shipdate < l_commitdate AND l_receiptdate >= TO_DATE('1995-01-01', 'YYYY-MM-DD') AND l_receiptdate < TO_DATE('1996-01-01', 'YYYY-MM-DD') 
-GROUP BY PERIOD WITH (ts, te) l_shipmode 
+GROUP BY PERIOD WITH (ts, te) l_shipmode
 ORDER BY l_shipmode
 ),
 _temp_view_1 AS (
