@@ -15,7 +15,7 @@ do
          if [ ! -f "$DIR/result/aq$i.txt" ];
          then
             echo -e "running q$i ..."
-            $DIR/scripts/time_aquery.sh employees $DIR/queries/pg_nat/$i.sql 2 1 > $DIR/result/aq_temp.txt
+            $DIR/scripts/time_aquery.sh employees $DIR/queries/pg_nat/$i.sql 100 5 > $DIR/result/aq_temp.txt
             mv $DIR/result/aq_temp.txt $DIR/result/aq$i.txt
          fi;            
 done;
