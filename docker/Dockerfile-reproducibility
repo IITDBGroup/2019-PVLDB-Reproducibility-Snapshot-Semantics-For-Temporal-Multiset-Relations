@@ -43,6 +43,7 @@ USER root
 ADD /datasets /datasets
 ADD load.sql /datasets/employee
 ADD tpc_load.sql /datasets/tpcbih
+ADD flights_load.sql /datasets/flights
 ADD pg_load_data.sh /scripts/pg_load_data.sh
 ADD temporal_pg_load_data.sh /scripts/temporal_pg_load_data.sh
 #######################################
