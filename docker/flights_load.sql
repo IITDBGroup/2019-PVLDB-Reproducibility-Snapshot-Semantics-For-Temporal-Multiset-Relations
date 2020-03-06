@@ -10,6 +10,7 @@ arrival_time VARCHAR
 
 \echo 'LOADING flights'
 \copy tmp FROM '/datasets/flights/flights.tsv' 
+delete from tmp where departure_time is NULL or arrival_time is NULL;
 
 DROP TABLE IF EXISTS flights;
 CREATE TABLE flights AS 

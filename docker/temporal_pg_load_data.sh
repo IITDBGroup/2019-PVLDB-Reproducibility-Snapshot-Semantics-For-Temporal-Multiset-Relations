@@ -34,6 +34,15 @@ $PREFIX/bin/psql -d time_tpch_1gb -f /datasets/tpcbih/tpc_load.sql -p 5400
 echo -e "\n\nDATA LOADED!\n\n"
 
 
+#create flights database
+$PREFIX/bin/createdb -p 5400 time_flights
+echo -e "\n\nDATABASE time_flights CREATED!\n\n"
+
+#load data into database
+$PREFIX/bin/psql -d time_flights -f /datasets/flights/flights_load.sql -p 5400
+echo -e "\n\nDATA LOADED!\n\n"
+
+
 $PREFIX/bin/pg_ctl -D $DATA -o "-F -p 5400" stop
 echo -e "\n\nDATABASE STOPPED!\n\n"
 
