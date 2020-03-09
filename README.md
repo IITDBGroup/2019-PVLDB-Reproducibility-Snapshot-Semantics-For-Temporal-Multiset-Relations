@@ -95,10 +95,20 @@ root@9bd801801bb9:/reproducibility# ./run-experiments.sh
 
 The whole experimental evaluation will take about TODO hours depending on your hardware. The script is setup to not overwrite existing files, i.e., an interrupted run can be continued from the last successful experiment.
 
+## Background
+
+For experiments that use our sequenced temporal semantics we use GProM to automatically rewrite queries into the SQL dialect of Postgres or Oracle. Queries using the temporal features of TPG or Teradata and created manually. For these queries we include the SQL scripts.
+
 # Run experiments (Oracle and Teradata)
 
 Since we cannot distribute these systems because of licensing issues, we provide access to the machine we did run the experiments on originally. Please contact Boris Glavic [bglavic@iit.edu](bglavic@iit.edu) or Xing
 Niu [xniu7@hawk.iit.edu](xniu7@hawk.iit.edu) for credentials.
+
+## Oracle
+
+
+
+## Teradata
 
 # Suggestions for additional experiments
 
@@ -106,7 +116,23 @@ Niu [xniu7@hawk.iit.edu](xniu7@hawk.iit.edu) for credentials.
 
 ## Running custom temporal queries with gprom
 
-You can use the GProM installation from the docker image to iteratively run queries with snapshot temporal semantics. GProM comes with a CLI client for running queries. Here we provide some ideas of what queries you could try.
+You can use the GProM installation from the docker image to iteratively run queries with snapshot temporal semantics. GProM comes with a CLI client for running queries.
+First start a container from the reproducibility image:
+
+~~~sh
+sudo docker run -d --rm --name run_gprom iitdbgroup/2019-pvldb-snapshot-temporal-reproducibility
+~~~
+
+Then create a bash session inside the container and run GProM and connect to the postgres backend running inside the container:
+
+~~~
+sudo docker exec -ti run_gprom /bin/bash
+root@9bd801801bb9:/reproducibility# gprom -backend postgres -user postgres -port 5432 -db postgres
+~~~
+
+Here we provide some ideas of what queries you could try:
+
+**TODO**
 
 
 # Appendix
@@ -117,7 +143,11 @@ Alternatively, you can manually setup the systems for experiments on your own ma
 
 ### Installing GProM
 
-To install GProM from source you should follow the instructions from [https://github.com/IITDBGroup/gprom](https://github.com/IITDBGroup/gprom).
+To install GProM from source you should follow the instructions from [https://github.com/IITDBGroup/gprom](https://github.com/IITDBGroup/gprom). Please use the `temporal` branch:
+
+~~~sh
+git clone --single-branch --branch temporal https://github.com/IITDBGroup/gprom.git
+~~~
 
 ### Installing Postgres
 
@@ -125,7 +155,7 @@ You can install Postgres from source or using your package managers (e.g., apt o
 
 ### Installing TPG (Temporal Postgres)
 
-Currently, temporal Postgres has to be installed from source (available [here](http://tpg.inf.unibz.it/). Once installed, loading data works just like with regular Postgres.
+Currently, TPG, the temporal extension of Postgres we are using, has to be installed from source (available [here](http://tpg.inf.unibz.it/). Once installed, loading data works just like with regular Postgres. Please follow the instructions from this webpage to install from source.
 
 ### Loading data
 
@@ -133,6 +163,6 @@ Currently, temporal Postgres has to be installed from source (available [here](h
 
 ### Running experiments
 
-You can clone the reproducibility repository [https://github.com/IITDBGroup/2019-PVLDB-Reproducibility-Snapshot-Semantics-For-Temporal-Multiset-Relations](https://github.com/IITDBGroup/2019-PVLDB-Reproducibility-Snapshot-Semantics-For-Temporal-Multiset-Relations) to get the scripts used to run the experiments and plotting the results. Note that you will have to edit a configuration file to account for the connection settings of your local postgres installation.
+Clone the reproducibility repository [https://github.com/IITDBGroup/2019-PVLDB-Reproducibility-Snapshot-Semantics-For-Temporal-Multiset-Relations](https://github.com/IITDBGroup/2019-PVLDB-Reproducibility-Snapshot-Semantics-For-Temporal-Multiset-Relations) to get the scripts used to run the experiments and plotting the results. Note that you will have to edit a configuration file to account for the connection settings of your local postgres installation.
 
 -- TODO explain
