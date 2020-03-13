@@ -112,7 +112,9 @@ Niu [xniu7@hawk.iit.edu](xniu7@hawk.iit.edu) for credentials.
 
 # Suggestions for additional experiments
 
-## TODO WHAT HERE?
+For additional experiments we provide the **flights** dataset that records the actual period in minutes of flights. Each record consists of an identifier (*id*), flight number (*flight_number*), departure airport (*departure_airport*), destination airport (*arrival_airport*), aircraft (*aircraftid*), and actual departure time (*departure_time*) and arrival time (*arrival_time*). The dataset records 57,585 flights over a period of 10 days in November 2014.
+
+For this dataset we provide several example queries, such as *What is the number of aircrafts in air at the same time?* or *Which aircrafts are in the air at the same time and arrive at the same destination?*.
 
 ## Running custom temporal queries with gprom
 
