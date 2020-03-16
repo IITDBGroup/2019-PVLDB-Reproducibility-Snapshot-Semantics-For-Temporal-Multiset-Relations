@@ -19,7 +19,7 @@ All runtime experiments were executed on a server with the specs shown below.
 | RAID Config      | 4 x 1TB, configured as RAID 5                                                 |
 | Disks            | 4 x 1TB 7.2K RPM Near-Line SAS 6Gbps (DELL CONSTELLATION ES.3)                |
 
-For experiments with Oracle and Teradata we will provide access to one of our machines as described below.
+For experiments with Oracle and Teradata we provide access to one of our machines as described below (creditials are shared through the reproducibility submission only).
 
 # Datasets
 
@@ -80,9 +80,13 @@ cd ~/temporal-results
 
 Start the image which will run the `/entrypoint.sh` script which starts up the two postgres systems and then sleeps:
 
+**WARNING: the following command starts the container with 110GB of memory to get an equivalent environment as used in our experiments. If you do not have access to machine with this amount of memory, then you can use an alternative image as described below for which postgres is setup to use less memory. However, the observed query runtimes may significantly differ from the runtimes reported in our paper.**
+
 ~~~sh
-sudo docker run -d --name seqrepro -v $(pwd):/reproducibility/results -p 6432:5432 -p 6433:5433 iitdbgroup/2019-pvldb-snapshot-temporal-reproducibility
+sudo docker run -M 110G -d --name seqrepro -v $(pwd):/reproducibility/results -p 6432:5432 -p 6433:5433 iitdbgroup/2019-pvldb-snapshot-temporal-reproducibility
 ~~~
+
+
 
 Note that the `-p` options expose the two postgres servers network ports as ports `6432` (regular postgres) and `6433` (temporal postgres) on your host machine. This is not necessary for running the experiments, but allows you to access the databases from your host, e.g., to explore the loaded data.
 
@@ -95,9 +99,14 @@ root@9bd801801bb9:/reproducibility# ./run-experiments.sh
 
 The whole experimental evaluation will take about TODO hours depending on your hardware. The script is setup to not overwrite existing files, i.e., an interrupted run can be continued from the last successful experiment.
 
+## Lower Memory Images
+
+We provide an additional image `iitdbgroup/2019-pvldb-snapshot-temporal-reproducibility:4GB` which only requires 4GB of memory. If you have to you can use this instead.
+
 ## Background
 
 For experiments that use our sequenced temporal semantics we use GProM to automatically rewrite queries into the SQL dialect of Postgres or Oracle. Queries using the temporal features of TPG or Teradata and created manually. For these queries we include the SQL scripts.
+
 
 # Run experiments (Oracle and Teradata)
 
