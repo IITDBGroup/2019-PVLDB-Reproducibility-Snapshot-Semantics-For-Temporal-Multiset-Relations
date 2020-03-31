@@ -3,6 +3,7 @@
 # Paper
 
 - **title**: Snapshot Semantics for Temporal Multiset Relations
+- **pdf link**: [http://www.vldb.org/pvldb/vol12/p639-dignoes.pdf](http://www.vldb.org/pvldb/vol12/p639-dignoes.pdf)
 - **abstract**: Snapshot semantics is widely used for evaluating queries over temporal data: temporal relations are seen as sequences of snapshot relations, and queries are evaluated at each snapshot. In this work, we demonstrate that current approaches for snapshot semantics over interval-timestamped multiset relations are subject to two bugs regarding snapshot aggregation and bag difference. We introduce a novel temporal data model based on K-relations that overcomes these bugs and prove it to correctly encode snapshot semantics. Furthermore, we present an efficient implementation of our model as a database middleware and demonstrate experimentally that our approach is competitive with native implementations.
 - **reproducibility instructions**: Our reproducibility submission is available as a git repository hosted on github: [https://github.com/IITDBGroup/2019-PVLDB-Reproducibility-Snapshot-Semantics-For-Temporal-Multiset-Relations](https://github.com/IITDBGroup/2019-PVLDB-Reproducibility-Snapshot-Semantics-For-Temporal-Multiset-Relations). The `README.md` file contains instructions for the reproducibility committee.
 
@@ -113,10 +114,14 @@ For experiments that use our sequenced temporal semantics we use GProM to automa
 Since we cannot distribute these systems because of licensing issues, we provide access to the machine we did run the experiments on originally. Please contact Boris Glavic [bglavic@iit.edu](bglavic@iit.edu) or Xing
 Niu [xniu7@hawk.iit.edu](xniu7@hawk.iit.edu) for credentials.
 
+- **If multiple persons are running the reproducibility experiments, please ensure that you are never running more than one instance of the Oracle and Teradata experiments  at the same time.**
+- **Please contact us before starting these experiments since our servers are also used for other unrelated experiments.**
+
 ## Oracle
 
-DBY - Oracle
-We are runing our Oracle experiment on ligeti server.
+We are running the Oracle experiments on one of our server (`ligeti.cs.iit.edu`).
+
+<!-- TODO -->
 1. Login to ligeti server: `ssh oracle@ligeti.cs.iit.edu`
 2. Go to the scripts folder: `cd /home/oracle/temporal_paper_reproducibility/scripts`
 3. Run `./run_queries.sh` to run the experiment and the result is in the result folder under path `/home/oracle/temporal_paper_reproducibility/result` (`tpcbih.csv`, `employee.csv` and `multiset.csv`).
@@ -125,12 +130,13 @@ We are runing our Oracle experiment on ligeti server.
 
 ## Teradata
 
-We are using a virtual machine to run the teradata experiments that is running on our server.
+We are using a virtual machine to run the Teradata experiments that is running on our server.
 
 1. Forward port: `ssh -f -N -L 5900:localhost:5900 reproduce@debussy.cs.iit.edu`
 2. Connect to the virtual machine remotely using a VNC viewer. Since we forwarded the VNC port to your local host, you need to connect to `localhost` or `127.0.0.1` (e.g., using VNC viewer, `ip:localhost`).
 3. Go to the scripts folder: `cd /root/Desktop/xing/scripts`
 4. Run `./run.sh` to run the experiment and the result could be found in the `result` folder (`employee.csv` and `multiset.csv`)
+5. Please let us know if you have any problems with this setup
 
 **These experiments take roughly take 1 day to finish on our hardware.**
 
@@ -141,7 +147,7 @@ For additional experiments we provide the **flights** dataset that records the a
 
 For this dataset we provide several example queries, such as *What is the number of aircrafts in air at the same time?* or *Which aircrafts are in the air at the same time and arrive at the same destination?*.
 
-## Running custom temporal queries with gprom
+## Running custom temporal queries with GProM
 
 You can use the GProM installation from the docker image to interactively run
 queries with snapshot temporal semantics. GProM comes with a CLI client for
@@ -164,13 +170,13 @@ The repository contains some example queries you could try in [SQL script](datas
 SELECT * FROM (SEQUENCED TEMPORAL (SELECT COUNT(*) FROM flights WITH TIME (departure_time, arrival_time))) seq ORDER BY t_b;
 ~~~
 
-**Note that per default in GProM every line entered is a query **
+**Note that per default in GProM every line you enter is interpreted as a query. If you want to split a query over multiple lines (a line ending in `;` finishes the current query), then enter `\m`.**
 
 # Appendix
 
 ## Alternative Manual Setup
 
-Alternatively, you can manually setup the systems for experiments on your own machine. To run the Postgres experiments you need to install both a regular postgres server and the temporal postgres (TPG) maintained by Anton Dignoes. Furthermore, you need to build GProM with support for Postgres backends (GProM can be compiled to support several backends by linking against the C client libraries of these backends). We provide instructions below.
+Alternatively, you can manually setup the systems for experiments on your own machine. To run the Postgres experiments you need to install both a regular postgres server and the temporal postgres (TPG) maintained by Anton Dignös. Furthermore, you need to build GProM with support for Postgres backends (GProM can be compiled to support several backends by linking against the C client libraries of these backends). We provide instructions below.
 
 ### Installing GProM
 
@@ -188,12 +194,31 @@ You can install Postgres from source or using your package managers (e.g., apt o
 
 Currently, TPG, the temporal extension of Postgres we are using, has to be installed from source (available [here](http://tpg.inf.unibz.it/). Once installed, loading data works just like with regular Postgres. Please follow the instructions from this webpage to install from source.
 
+### Create Postgres clusters
+
+You need to create clusters (Postgres speak for the directory storing the database files) for both installations. Have a look at `docker/tpg_quickbuild.sh` and use `initdb` for the other normal postgres installation.
+
+### Postgres configuration files
+
+We provide a configuration file for postgres to be used for both installations. Please copy `docker/postgresql.conf` into the clusters you have created.
+
 ### Loading data
 
--- TODO explain
+This part consists of two steps. First extracting the data from the docker container and then importing it into the two postgres installations. For that start up a container from the image and use `pg_dump` to dump out both databases and then load them into your local installations ([Postgres documentation](https://www.postgresql.org/docs/9.5/backup-dump.html)).
+
 
 ### Running experiments
 
 Clone the reproducibility repository [https://github.com/IITDBGroup/2019-PVLDB-Reproducibility-Snapshot-Semantics-For-Temporal-Multiset-Relations](https://github.com/IITDBGroup/2019-PVLDB-Reproducibility-Snapshot-Semantics-For-Temporal-Multiset-Relations) to get the scripts used to run the experiments and plotting the results. Note that you will have to edit a configuration file to account for the connection settings of your local postgres installation.
 
--- TODO explain
+#### Starting up Postgres
+
+Please run the both Postgres installation. The temporal one should listen on port `5433` and standard Postgres on `5432`.
+
+#### Adapt the experiment scripts
+
+You may have to change paths in the experiment scripts in `experiment-scripts/scripts`.
+
+#### Running the experiments script
+
+Run `experiment-scripts/run_experiment.sh`. Note that this can take several days to run depending on your hardware. Experiments can be restarted and continued from where you left of as explained above.

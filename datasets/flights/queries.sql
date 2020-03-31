@@ -15,7 +15,7 @@ SELECT *
 SELECT *
   FROM
       (SEQUENCED TEMPORAL (
-        SELECT COUNT(*)
+        SELECT arrival_airport, COUNT(*) AS numFlights
           FROM flights WITH TIME (departure_time, arrival_time)
          GROUP BY arrival_airport
       )) seq
@@ -53,5 +53,6 @@ GROUP BY PERIOD WITH (departure_time, arrival_time) arrival_airport;
 -- pairs of aircrafts in the air at the same time with the same destination
 SELECT f1.arrival_airport AS arrival_airport,
        f1.flight_numer as f1_flight_num, f1.departure_airport AS f1_departure_airport, f1.aircraftid AS f1_aircraftid,
-       f2.flight_numer as f2_flight_num, f2.departure_airport AS f2_departure_airport, f2.aircraftid AS f2_aircraftid
+       f2.flight_numer as f2_flight_num, f2.departure_airport AS f2_departure_airport, f2.aircraftid AS f2_aircraftid,
+       d_time, a_time
 FROM (flights f1 PERIOD JOIN WITH (departure_time, arrival_time, departure_time, arrival_time) AS (d_time, a_time) flights f2 ON f1.arrival_airport = f2.arrival_airport) f;
