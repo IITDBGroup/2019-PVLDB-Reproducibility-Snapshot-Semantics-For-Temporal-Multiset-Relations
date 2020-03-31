@@ -133,3 +133,5 @@ COPY time_orders FROM '/datasets/tpcbih/time_orders.csv' WITH CSV DELIMITER ',' 
 COPY time_lineitem FROM '/datasets/tpcbih/time_lineitem.csv' WITH CSV DELIMITER ',' HEADER;
 COPY time_nation FROM '/datasets/tpcbih/time_nation.csv' WITH CSV DELIMITER ',' HEADER;
 COPY time_region FROM '/datasets/tpcbih/time_region.csv' WITH CSV DELIMITER ',' HEADER;
+
+vacuum analyze;
