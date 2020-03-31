@@ -4,7 +4,7 @@
 
 - **title**: Snapshot Semantics for Temporal Multiset Relations
 - **pdf link**: [http://www.vldb.org/pvldb/vol12/p639-dignoes.pdf](http://www.vldb.org/pvldb/vol12/p639-dignoes.pdf)
-- **abstract**: Snapshot semantics is widely used for evaluating queries over temporal data: temporal relations are seen as sequences of snapshot relations, and queries are evaluated at each snapshot. In this work, we demonstrate that current approaches for snapshot semantics over interval-timestamped multiset relations are subject to two bugs regarding snapshot aggregation and bag difference. We introduce a novel temporal data model based on K-relations that overcomes these bugs and prove it to correctly encode snapshot semantics. Furthermore, we present an efficient implementation of our model as a database middleware and demonstrate experimentally that our approach is competitive with native implementations.
+- **abstract**: Snapshot semantics is widely used for evaluating queries over temporal data: temporal relations are seen as sequences of snapshot relations, and queries are evaluated at each snapshot. In this work, we demonstrate that current approaches for snapshot semantics over interval-timestamped multiset relations are subject to two bugs regarding snapshot aggregation and bag difference. We introduce a novel temporal data model based on K-relations that overcomes these bugs and prove it to correctly encode snapshot semantics. Furthermore, we present an efficient implementation of our model as a database middle-ware and demonstrate experimentally that our approach is competitive with native implementations.
 - **reproducibility instructions**: Our reproducibility submission is available as a git repository hosted on github: [https://github.com/IITDBGroup/2019-PVLDB-Reproducibility-Snapshot-Semantics-For-Temporal-Multiset-Relations](https://github.com/IITDBGroup/2019-PVLDB-Reproducibility-Snapshot-Semantics-For-Temporal-Multiset-Relations). The `README.md` file contains instructions for the reproducibility committee.
 
 # Hardware
@@ -20,7 +20,7 @@ All runtime experiments were executed on a server with the specs shown below.
 | RAID Config      | 4 x 1TB, configured as RAID 5                                                 |
 | Disks            | 4 x 1TB 7.2K RPM Near-Line SAS 6Gbps (DELL CONSTELLATION ES.3)                |
 
-For experiments with Oracle and Teradata we provide access to one of our machines as described below (creditials are shared through the reproducibility submission only).
+For experiments with Oracle and Teradata we provide access to one of our machines as described below (credentials are shared through the reproducibility submission only).
 
 # Datasets
 
@@ -36,7 +36,7 @@ In our accompanying technical report we also use a third dataset (*Tourism*). Ho
 We ran all experiments using the implementation of our rewriting for sequenced temporal queries in [GProM](https://github.com/IITDBGroup/gprom). GProM compiles such queries into SQL code for various backend SQL dialects. In our experiments we used four  backend databases:
 
 - PostgreSQL version
-- The version of PostgreSQL with temporal support from
+- The version of PostgreSQL with temporal support from [http://tpg.inf.unibz.it/](http://tpg.inf.unibz.it/)
 - Oracle (running on our server)
 - Teradata (available for free as a VM)
 
@@ -143,7 +143,7 @@ We are using a virtual machine to run the Teradata experiments that is running o
 
 # Suggestions for additional experiments
 
-For additional experiments we provide the **flights** dataset that records the actual duration of fliths as a period in minutes. Each record consists of an identifier (*id*), flight number (*flight_number*), departure airport (*departure_airport*), destination airport (*arrival_airport*), aircraft (*aircraftid*), and actual departure time (*departure_time*) and arrival time (*arrival_time*). The dataset records 57,585 flights over a period of 10 days in November 2014.
+For additional experiments we provide the **flights** dataset that records the actual duration of flights as a period in minutes. Each record consists of an identifier (*id*), flight number (*flight_number*), departure airport (*departure_airport*), destination airport (*arrival_airport*), aircraft (*aircraftid*), and actual departure time (*departure_time*) and arrival time (*arrival_time*). The dataset records 57,585 flights over a period of 10 days in November 2014.
 
 For this dataset we provide several example queries, such as *What is the number of aircrafts in air at the same time?* or *Which aircrafts are in the air at the same time and arrive at the same destination?*.
 
