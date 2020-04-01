@@ -74,3 +74,5 @@ CREATE TABLE salaries (
 \i /datasets/employee/load_titles.sql
 \echo 'LOADING salaries'
 \i /datasets/employee/load_salaries.sql
+
+vacuum analyze;

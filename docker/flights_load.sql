@@ -24,3 +24,5 @@ SELECT id,
 FROM tmp;
 
 DROP TABLE tmp;
+
+vacuum analyze;
