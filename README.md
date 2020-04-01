@@ -122,9 +122,9 @@ Niu [xniu7@hawk.iit.edu](xniu7@hawk.iit.edu) for credentials.
 We are running the Oracle experiments on one of our server (`ligeti.cs.iit.edu`).
 
 <!-- TODO -->
-1. Login to ligeti server: `ssh oracle@ligeti.cs.iit.edu`
-2. Go to the scripts folder: `cd /home/oracle/temporal_paper_reproducibility/scripts`
-3. Run `./run_queries.sh` to run the experiment and the result is in the result folder under path `/home/oracle/temporal_paper_reproducibility/result` (`tpcbih.csv`, `employee.csv` and `multiset.csv`).
+1. Login to ligeti server: `ssh reproduce@ligeti.cs.iit.edu`
+2. Go to the scripts folder: `cd /home/reproduce/temporal_paper_reproducibility/scripts`
+3. Run `./run_queries.sh` to run the experiment and the result is in the result folder under path `/home/reproduce/temporal_paper_reproducibility/result` (`tpcbih.csv`, `employee.csv` and `multiset.csv`).
 
 **These experiments take roughly take 3 days to finish on our hardware.**
 
